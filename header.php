@@ -7,30 +7,16 @@
 
     <meta charset="UTF-8">
 
-    <title><?php echo WP_DEBUG_LOG  .':'. WP_DEBUG_DISPLAY;  if ( !defined( 'WP_DEBUG' ) || WP_DEBUG == false ) : echo 'not debugging'; else : echo 'debugging'; endif; ?></title>
+    <title></title>
     <meta name="description" content="">
-    <meta name="keywords" content="">
 
-    <?php if ( strpos( IS_DEV, 'youareempire' ) ) : ?><meta name="robots" content="noindex, nofollow"><?php endif; ?>
+<?php echo emp_getMobileProperties(); ?>
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>">
-    <meta name="viewport" content="width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no">
+<?php echo emp_getSocialProperties(); ?>
 
-    <meta property="og:locale" content="en_GB">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php the_title(); ?> - <?php bloginfo( 'name' ); ?>">
-    <meta property="og:url" content="<?php bloginfo( 'url' ); ?>">
-    <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@weareempireuk">
-    <meta name="twitter:title" content="<?php the_title(); ?>">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-    <meta name="twitter:url" content="<?php bloginfo( 'url' ); ?>">
-    <?php if(get_field('fav_ico','option') ): ?>
+
+    <?php /* if(get_field('fav_ico','option') ): ?>
       <link rel="shortcut icon" href="<?php the_field('fav_ico','option');?>">
     <?php endif; ?>
     <?php if(get_field('apple_touch_logo','option') ): ?>
@@ -43,13 +29,7 @@
       <script src="//use.typekit.net/<?php the_field('typekit_id','option'); ?>.js"></script>
       <script>try{Typekit.load();}catch(e){}</script>
     <?php endif; ?>
-    <link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/assets/css/style.css">
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS Feed" href="<?php bloginfo( 'url' ); ?>/feed/">
-
-    <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        
-    <![endif]-->
+    <link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/assets/css/main.css">
 
     <?php if(get_field('google_analtics_id','option') ): ?>
       <script>
@@ -62,7 +42,9 @@
         ga('send', 'pageview');
 
       </script>
-    <?php endif; ?>
+    <?php endif; */ ?>
+
+    <?php wp_head(); ?>
 
   </head>
 
@@ -73,7 +55,7 @@
         <header class="header" id="header" role="banner">
 
           <div class="container">
-
+<?php /*
             <a class="brand" id="brand" href="<?php bloginfo( 'url' ); ?>">
               <?php if(get_field('logo','option') ): ?>
                 <img src="<?php the_field('logo','option');?>">
@@ -81,7 +63,7 @@
             </a>
 
             <a class="empireMenu" id="empireMenu__control" href="#">menu</a>
-
+*/ ?>
             <?php wp_nav_menu( array(
 
                 'theme_location'    => 'primary',

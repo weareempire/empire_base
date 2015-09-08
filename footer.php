@@ -7,8 +7,7 @@
 
     </div>
 
-    <?php ts_emp_get_file( 'menu', 'js', false ); ?>
-    <script src="<?php bloginfo( 'template_url' ); ?>/assets/javascript/min/menu.min.js"></script>
+    <?php wp_footer(); ?>
 
   </body>
 

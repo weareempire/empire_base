@@ -1,18 +1,19 @@
-<?php /* ======================================================================
+<?php
 
-  IMPORT ADVANCED CUSTOM FIELDS
+  if ( file_exists( TEMPLATEPATH . '/update/update.php' ) ) :
 
-============================================================================ */
+    require_once( TEMPLATEPATH . '/update/update.php' );
 
-if( function_exists('acf_add_options_page') ) {
-  
-  acf_add_options_page(array(
-    'page_title'  => 'Empire Settings',
-    'menu_title'  => 'EMP Settings',
-    'menu_slug'   => 'general-settings',
-    'capability'  => 'edit_posts',
-    'redirect'    => false
-  ));
-  
-}
+  endif;
+
+  if ( file_exists( get_template_directory() . '/functions/general/functions.php' ) ) :
+
+    include_once( get_template_directory() . '/functions/general/functions.php' );
+
+  endif;
+
+
+
+
+
 
