@@ -125,3 +125,63 @@ class custom_walker extends Walker_Nav_Menu {
   }
 
 }
+
+
+/* ============================================================================
+
+  THEME SCRIPTS
+
+============================================================================ */
+
+function theme_scripts() {
+
+  wp_deregister_script( 'jquery' );
+
+  wp_register_script( 'jquery', 'http' . ( $_SERVER[ 'SERVER_PORT' ] == 443 ? "s" : "" ) . '://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js', false, null );
+
+  wp_enqueue_script( 'jquery' );
+
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_scripts' );
+
+
+
+/* ============================================================================
+
+  WORDPRESS MENUS
+
+===============================================================================
+
+  - Register custom menus
+
+  - Create Custom Walker, strips out unnecessary classes
+
+============================================================================ */
+
+register_nav_menus( array(
+
+  'primary'   => __( 'Primary', 'empire_base' ), 
+  'secondary' => __( 'Secondary', 'empire_base' ),
+  'footer'    => __( 'Footer', 'empire_base' )
+
+) );
+
+
+/* ============================================================================
+
+  ACF FULL WIDTH
+
+============================================================================ */
+
+add_action( 'admin_head', 'acf_full_width' );
+
+function acf_full_width() {
+
+  echo '<style>';
+  echo '.acf-field { max-width: none !important; }';
+  echo '#wpbody-content{ overflow: hidden !important; }';
+  echo '</style>';
+
+}
+
