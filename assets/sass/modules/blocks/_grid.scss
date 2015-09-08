@@ -1,0 +1,358 @@
+/* ============================================================================
+
+  GRID SYSTEM
+
+===============================================================================
+
+  - Generates styling for the grid system, requires width
+
+  - Uses partial _global_grid.scss to render
+
+============================================================================ */
+
+@mixin grid( $width, $gutter: 30, $columns: 12, $padding: 0 ) {
+
+
+/* ============================================================================
+
+  CONTAINER
+
+===============================================================================
+
+  - If gutter is set, padding-left & right is added, if width is set, a max-width is added, also positions .container center of screen.
+
+============================================================================ */
+
+  .container {
+    position: relative;
+
+    @include box();
+    width: 100%;
+
+    @if $width > 0 {
+
+      max-width: $width + px;
+
+    }
+
+    margin-right: auto;
+    margin-left:  auto;
+
+    @if $gutter > 0 {
+
+      padding-right: ( $gutter / 2 ) + px;
+      padding-left:  ( $gutter / 2 ) + px;
+
+    }
+
+  }
+
+
+/* ============================================================================
+
+  SMALL BREAK POINT
+
+============================================================================ */
+
+  @media ( min-width: $small + px ) {
+
+    .container {
+
+      @if $gutter > 0 {
+
+        max-width: $small - ( $gutter / 2 ) + px;
+
+      } @else {
+
+        max-width: $small + px;
+
+      }
+
+    }
+
+  }
+
+
+/* ============================================================================
+
+  MEDIUM BREAK POINT
+
+============================================================================ */
+
+  @media ( min-width: $medium + px ) {
+
+    .container {
+
+      @if $gutter > 0 {
+
+        max-width: $medium - ( $gutter / 2 ) + px;
+
+      } @else {
+
+        max-width: $medium + px;
+
+      }
+
+    }
+
+  }
+
+
+/* ============================================================================
+
+  LARGE BREAK POINT
+
+============================================================================ */
+
+  @media ( min-width: $large + px ) {
+
+    .container {
+
+      @if $gutter > 0 {
+
+        max-width: $large - ( $gutter / 2 ) + px;
+
+      } @else {
+
+        max-width: $large + px;
+
+      }
+
+    }
+
+  }
+
+
+/* ============================================================================
+
+  MAX WIDTH
+
+============================================================================ */
+
+  @media ( min-width: $width + px ) {
+
+    .container {
+
+      @if $gutter > 0 {
+
+        max-width: $width - ( $gutter / 2 ) + px;
+
+      } @else {
+
+        max-width: $width + px;
+
+      }
+
+    }
+
+  }
+
+
+/* ============================================================================
+
+  ROW
+
+===============================================================================
+
+  - font-size is set to 0 here to allow inline positioning of columns, if gutter is set a negative margin is added to each side to force 100% width.
+
+============================================================================ */
+
+  .row {
+    @include box();
+
+    @if $gutter > 0 {
+
+      margin-right: - ( $gutter / 2 ) + px;
+      margin-left:  - ( $gutter / 2 ) + px;
+
+    }
+
+    font-size: 0;
+
+    overflow: hidden;
+
+  }
+
+
+/* ============================================================================
+
+  COLUMN
+
+===============================================================================
+
+  - Includes placeholder CSS, if padding is set adds padding each side of each column, calculates width of each column, including responsive widths.
+
+============================================================================ */
+
+  %column {
+    position: relative;
+
+    @include display_inline();
+    @include box();
+    width: 100%;
+    min-height: 1px;
+
+    @if $padding > 0 {
+
+      padding-right: $padding + px;
+      padding-left:  $padding + px;
+
+    }
+
+  }
+
+
+/* ============================================================================
+
+  COLUMNS DEFAULT WIDTH
+
+============================================================================ */
+
+  @if $columns > 0 {
+
+    @for $i from 1 through $columns {
+
+      .col-xs-#{$i} {
+
+        @extend %column;
+
+        width: ( ( 100 / $columns ) * $i ) * 1%;
+
+      }
+
+      .col-sm-#{$i} {
+
+        @extend %column;
+
+      }
+
+      .col-md-#{$i} {
+
+        @extend %column;
+
+      }
+
+      .col-lg-#{$i} {
+
+        @extend %column;
+
+      }
+
+    }
+
+
+/* ============================================================================
+
+  COLUMNS SMALL BREAK POINT
+
+============================================================================ */
+
+    @media ( min-width: $small + px ) {
+
+      @for $i from 1 through $columns {
+
+        .col-sm-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+        }
+
+        .col-sm-pull-#{$i} {
+
+          width: ( ( 100 / $columns) * $i ) * 1%;
+
+          float: left;
+
+        }
+
+        .col-sm-push-#{$i} {
+
+          width: ( ( 100 / $columns) * $i ) * 1%;
+
+          float: right;
+
+        }
+
+      }
+
+    }
+
+
+/* ============================================================================
+
+  COLUMNS MEDIUM BREAK POINT
+
+============================================================================ */
+
+    @media ( min-width: $medium + px ) {
+
+      @for $i from 1 through $columns {
+
+        .col-md-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+        }
+
+        .col-md-pull-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+          float: left;
+
+        }
+
+        .col-md-push-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+          float: right;
+
+        }
+
+      }
+
+    }
+
+
+/* ============================================================================
+
+  COLUMNS LARGE BREAK POINT
+
+============================================================================ */
+
+    @media ( min-width: $large + px ) {
+
+      @for $i from 1 through $columns {
+
+        .col-lg-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+        }
+
+        .col-lg-pull-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+          float: left;
+
+        }
+
+        .col-lg-push-#{$i} {
+
+          width: ( ( 100 / $columns ) * $i ) * 1%;
+
+          float: right;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+

@@ -1,0 +1,202 @@
+/* ============================================================================
+
+  SLIDE IN MENU
+
+===============================================================================
+
+  - Generates styling for the slide in menu
+
+  - Uses partial _section_menu.scss to render
+
+============================================================================ */
+
+@mixin slideMenu(
+
+	$width: 300,
+	$background_color: #000,
+
+	$lvl1_height: 90,
+	$lvl2_height: 60,
+
+	$indent: 10
+
+
+) {
+
+	$highlight: null;
+	$text-color: null;
+
+	@if $background_color == $brand {
+
+		$highlight: $brand;
+		$text-color: $white;
+
+	} @else if $background_color == false {
+
+		$highlight: null;
+		$text-color: null;
+
+	} @else if lightness( $background_color ) < 50% {
+
+		$highlight: $background_color;
+		$text-color: $white;
+
+	} @else {
+
+		$highlight: $background_color;
+		$text-color: #000;
+
+	}
+
+/* ============================================================================
+
+  SLIDE IN MENU
+
+============================================================================ */
+
+	.slide-in-menu {
+		position: fixed;
+		z-index: 1;
+		top:   0;
+		right: - $width + px;
+
+		width: $width + px;
+		height: 100%;
+
+		background-color: $background_color;
+
+		overflow: auto;
+		@include transition(right, .3s, ease-in);
+
+		@media ( max-width: $small + px ) {
+
+			right: -240px;
+
+			width: 240px;
+
+		}
+
+		&.open {
+			right: 0;
+		}
+
+
+/* ============================================================================
+
+  MENU LIST
+
+============================================================================ */
+
+		& > ul {
+			position: relative;
+
+			width: 100%;
+			height: 100%;
+
+
+/* ============================================================================
+
+  FIRST LEVEL
+
+============================================================================ */
+
+			& > li {
+				height: $lvl1_height + px;
+
+				background-color: $highlight;
+
+				line-height: $lvl1_height + px;
+
+				overflow: hidden;
+				@include transition( all, .3s, ease-in);
+
+				&.menu-item-has-children {
+					background-image:    url( '../images/sub-menu-open.png' );
+					background-repeat:   no-repeat;
+					background-position: right 40px top ( $lvl1_height / 2 ) - 9 + px;
+					background-size:     18px;
+
+					&.open {
+						background-image: url( '../images/sub-menu-close.png' );
+					}
+
+				}
+
+				&.odd {
+					@if $background_color != false { background-color: $highlight; }
+				}
+
+				&.even {
+					@if $background_color != false { background-color: lighten( $highlight, 3 ); }
+				}
+
+				&:hover, &.open {
+					@if $background_color != false { background-color: lighten( $highlight, 15 ); }
+				}
+
+				&.closed {
+					height: 0;
+					border: none;
+				}
+
+
+/* ============================================================================
+
+  LINK STYLES
+
+============================================================================ */
+
+				a {
+					display: block;
+					padding-top:    0;
+					padding-right:  $indent + px;
+					padding-bottom: 0;
+					padding-left:   $indent + px;
+
+					color: #fff;
+
+					font-size: 14px;
+					text-decoration: none;
+				}
+
+/* ============================================================================
+
+  SECOND LEVEL
+
+============================================================================ */
+
+				& > ul {
+
+					& > li {
+						height: $lvl2_height + px;
+
+						background-color: $highlight;
+
+						line-height: $lvl2_height + px;
+
+						@include transition( all, .3s, ease-in);
+
+						&.odd {
+							@if $background_color != false { background-color: lighten( $highlight, 3 ); }
+						}
+
+						&.even {
+							@if $background_color != false { background-color: $highlight; }
+						}
+
+						&:hover {
+							@if $background_color != false { background-color: lighten( $highlight, 15 ); }
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
+}

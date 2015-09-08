@@ -1,0 +1,32 @@
+/* ============================================================================
+
+  TRANSITION
+
+===============================================================================
+
+  - Allows the use of the transition mixin, no variable required
+
+============================================================================ */
+
+@mixin transition( $element: all, $time: .3s, $ease: ease-in, $delay: 0 ) {
+
+  @if ( $delay == 0 ) {
+
+    -webkit-transition: $element $time $ease;
+       -moz-transition: $element $time $ease;
+         -o-transition: $element $time $ease;
+            transition: $element $time $ease;
+
+  }
+
+  @else {
+
+    -webkit-transition: $element $time $ease $delay;
+       -moz-transition: $element $time $ease $delay;
+         -o-transition: $element $time $ease $delay;
+            transition: $element $time $ease $delay;
+
+  }
+
+}
+

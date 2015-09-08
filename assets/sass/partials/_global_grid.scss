@@ -1,0 +1,22 @@
+/* ============================================================================
+
+  GLOBAL GRID SYSTEM
+
+===============================================================================
+
+  - grid ( width , gutter , columns , column padding )
+
+  - To set up the grid select a max-width, if no max width, set 0 to use large break_point
+
+  - Set the gutter to the total gutter width ( e.g. if gutter on each side is 15 set gutter to 30 ), default is 30
+
+  - Set columns column count, default is 12
+
+  - By setting a column padding, it will add padding on either side of each column, equal numbers work best, ( e.g. adding a padding of 30 will add a 15px padding to each side of each column ), default is 0
+
+  - PLEASE NOTE: It is best practice to set all values but only width is required, as the other values have default values attached to them.
+
+============================================================================ */
+
+@include grid( 1600, 30, 12, 15 );
+

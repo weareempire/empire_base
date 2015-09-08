@@ -1,0 +1,19 @@
+/* ============================================================================
+
+  DISPLAY INLINE
+
+===============================================================================
+
+  - Allows the use of the display inline mixin, no variable required
+
+============================================================================ */
+
+@mixin display_inline( $align: top ) {
+
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  vertical-align: $align;
+
+}
+

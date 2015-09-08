@@ -1,0 +1,77 @@
+/* ============================================================================
+
+  GLOBAL GRID SYSTEM
+
+===============================================================================
+
+  - slideMenu ( width, background colour, first level height, second level height, link indent )
+
+  - Choose max width
+
+  - Choose a background colour, ( if you wish, go to: modules/blocks/_menu.scss and edit this directly, for future reference change this value to false if you have directly )
+
+  - Set columns column count, default is 12
+
+  - By setting a column padding, it will add padding on either side of each column, equal numbers work best, ( e.g. adding a padding of 30 will add a 15px padding to each side of each column ), default is 0
+
+  - PLEASE NOTE: It is best practice to set all values but only width is required, as the other values have default values attached to them.
+
+============================================================================ */
+
+@include slideMenu( 300, #32313d, 80, 50, 20 );
+
+
+/* ============================================================================
+
+  MENU CONTROL BUTTON
+
+============================================================================ */
+
+.empireMenu {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+
+	display: block;
+	height: 50px;
+	width: 50px;
+
+	background-color:    $brand;
+	background-image:    url( '../images/menu-open.png' );
+	background-repeat:   no-repeat;
+	background-position: center;
+	background-size:     18px;
+
+	line-height: 50px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	-webkit-transition: right .3s ease-in, background-image .3s ease-in;
+	   -moz-transition: right .3s ease-in, background-image .3s ease-in;
+	        transition: right .3s ease-in, background-image .3s ease-in;
+
+
+/* ============================================================================
+
+  OPEN STATE
+
+===============================================================================
+
+  - If you have chosen to adjust the menu button after opening, adjust styles here
+
+============================================================================ */
+
+	&.open {
+		right: 300px;
+
+		background-image: url( '../images/menu-close.png' );
+
+		@media ( max-width: $small + px ) {
+			right: 255px;
+		}
+
+	}
+
+}
+

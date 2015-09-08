@@ -1,0 +1,18 @@
+/* ============================================================================
+
+  BORDER RADIUS
+
+===============================================================================
+
+  - Allows the use of the border radius mixin, requires a value, any unit is usuable
+
+============================================================================ */
+
+@mixin border_radius( $radius ) {
+
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+
+}
+
