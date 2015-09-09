@@ -37,7 +37,7 @@
 
   if ( file_exists( get_template_directory() . '/functions/general/functions.php' ) ) :
 
-    include_once( get_template_directory() . '/functions/general/functions.php' );
+    include( get_template_directory() . '/functions/general/functions.php' );
 
   endif;
 
@@ -60,7 +60,7 @@
 
   if ( file_exists( get_template_directory() . '/functions/woocommerce/functions.php' ) ) :
 
-    include_once( get_template_directory() . '/functions/woocommerce/functions.php' );
+    include( get_template_directory() . '/functions/woocommerce/functions.php' );
 
   endif;
 
@@ -83,7 +83,7 @@
 
   if ( is_plugin_active( 'woocommerce/woocommerce.php' ) && file_exists( get_template_directory() . '/functions/woocommerce/functions.php' ) ) :
 
-    include_once( get_template_directory() . '/functions/woocommerce/functions.php' );
+    include( get_template_directory() . '/functions/woocommerce/functions.php' );
 
   endif;
 
